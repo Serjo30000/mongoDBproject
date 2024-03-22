@@ -1,0 +1,40 @@
+﻿@model mongoDBproject.Models.OrderBook
+
+@{
+    ViewData["Title"] = "UpdateOrderBook";
+}
+
+<h1>UpdateOrderBook</h1>
+
+<h4>OrderBook</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateOrderBook">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdOrder" class="control-label"></label>
+                <input asp-for="IdOrder" class="form-control" />
+                <span asp-validation-for="IdOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdBook" class="control-label"></label>
+                <input asp-for="IdBook" class="form-control" />
+                <span asp-validation-for="IdBook" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Mark" /> @Html.DisplayNameFor(model => model.Mark)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetListOrderBook">Back to List</a>
+</div>
+

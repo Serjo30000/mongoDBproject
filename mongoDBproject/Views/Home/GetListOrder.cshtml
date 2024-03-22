@@ -1,0 +1,73 @@
+﻿@model IEnumerable<mongoDBproject.Models.Order>
+
+@{
+    ViewData["Title"] = "GetListOrder";
+}
+
+<h1>GetListOrder</h1>
+<form asp-action="GetListOrder" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            Find by type: <input type="text" name="SearchType" value="@ViewData["CurrentType"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+@Html.ActionLink("Create New", "CreateOrder")
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="GetListOrder" asp-route-sortOrder="@ViewData["IdSortParmOrder"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrder" asp-route-sortOrder="@ViewData["IdUserSortParmOrder"]">@Html.DisplayNameFor(model => model.IdUser)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrder" asp-route-sortOrder="@ViewData["DateOrderSortParmOrder"]">@Html.DisplayNameFor(model => model.DateOrder)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrder" asp-route-sortOrder="@ViewData["CountOrderSortParmOrder"]">@Html.DisplayNameFor(model => model.CountOrder)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrder" asp-route-sortOrder="@ViewData["IdOrderBookSortParmOrder"]">@Html.DisplayNameFor(model => model.IdOrderBook)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrder" asp-route-sortOrder="@ViewData["IdBookSortParmOrder"]">@Html.DisplayNameFor(model => model.IdBook)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOrderBook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBook)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "UpdateOrder", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("View", "GetOrder", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "DeleteOrder", new { id = item.Id/* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Index</a>

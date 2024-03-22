@@ -1,0 +1,39 @@
+﻿@model mongoDBproject.Models.Genre
+
+@{
+    ViewData["Title"] = "DeleteLibrarianGenre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>DeleteLibrarianGenre</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdBook)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdBook)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GenreName)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteLibrarianGenre">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="GetListLibrarianGenre">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<mongoDBproject.Models.BookGroup>
+
+@{
+    ViewData["Title"] = "GetAggregateBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetAggregateBooks</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvgPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstPublic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastPublic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FieldBook)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstPublic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastPublic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FieldBook.Count)
+            </td>
+            <td>
+                @Html.ActionLink("View", "GetAggregateBook", new { id = item.Id/* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Index">Back to Index</a>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<mongoDBproject.Models.Genre>
+
+@{
+    ViewData["Title"] = "GetListLibrarianGenre";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetListLibrarianGenre</h1>
+<form asp-action="GetListLibrarianGenre" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            Find by type: <input type="text" name="SearchType" value="@ViewData["CurrentType"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+@Html.ActionLink("Create New", "CreateLibrarianGenre")
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="GetListLibrarianGenre" asp-route-sortGenre="@ViewData["IdSortParmGenre"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th>
+            <th>
+                <a asp-action="GetListLibrarianGenre" asp-route-sortGenre="@ViewData["IdBookSortParmGenre"]">@Html.DisplayNameFor(model => model.IdBook)</a>
+            </th>
+            <th>
+                <a asp-action="GetListLibrarianGenre" asp-route-sortGenre="@ViewData["GenreNameSortParmGenre"]">@Html.DisplayNameFor(model => model.GenreName)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBook)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GenreName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateLibrarianGenre", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("View", "GetLibrarianGenre", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "DeleteLibrarianGenre", new { id = item.Id/* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Index</a>

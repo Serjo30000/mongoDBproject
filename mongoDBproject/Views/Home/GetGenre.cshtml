@@ -1,0 +1,32 @@
+﻿@model mongoDBproject.Models.Genre
+@{
+    ViewData["Title"] = "GetGenre";
+}
+
+<h1>GetGenre</h1>
+
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdBook)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdBook)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GenreName)
+        </dd>
+    </dl>
+    <a asp-action="GetListGenre">Back to List</a>
+</div>

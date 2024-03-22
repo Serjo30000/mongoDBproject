@@ -1,0 +1,90 @@
+﻿@model IEnumerable<mongoDBproject.Models.Book>
+
+@{
+    ViewData["Title"] = "GetListClientBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetListClientBook</h1>
+<form asp-action="GetListClientBook" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            Find by type: <input type="text" name="SearchType" value="@ViewData["CurrentType"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["IdSortParmBook"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["NameSortParmBook"]">@Html.DisplayNameFor(model => model.Name)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["FamilySortParmBook"]">@Html.DisplayNameFor(model => model.Family)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["SecondNameSortParmBook"]">@Html.DisplayNameFor(model => model.SecondName)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["NameBookSortParmBook"]">@Html.DisplayNameFor(model => model.NameBook)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["PublishSortParmBook"]">@Html.DisplayNameFor(model => model.Publish)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["YearSortParmBook"]">@Html.DisplayNameFor(model => model.Year)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["PriceSortParmBook"]">@Html.DisplayNameFor(model => model.Price)</a>
+            </th>
+            <th>
+                <a asp-action="GetListClientBook" asp-route-sortBook="@ViewData["CountSortParmBook"]">@Html.DisplayNameFor(model => model.Count)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Family)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameBook)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publish)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @Html.ActionLink("View", "GetClientBook", new { id = item.Id /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Buy", "CreateClientOrder", new { idBook = item.Id /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Index</a>

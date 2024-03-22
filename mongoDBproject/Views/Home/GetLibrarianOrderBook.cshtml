@@ -1,0 +1,38 @@
+﻿@model mongoDBproject.Models.OrderBook
+@{
+    ViewData["Title"] = "GetLibrarianOrderBook";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetLibrarianOrderBook</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdOrder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdOrder)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IdBook)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdBook)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mark)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mark)
+        </dd>
+    </dl>
+    <a asp-action="GetListLibrarianOrderBook">Back to List</a>
+</div>

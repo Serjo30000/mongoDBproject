@@ -1,0 +1,55 @@
+﻿@model IEnumerable<mongoDBproject.Models.OrderBook>
+
+@{
+    ViewData["Title"] = "GetListOrderBook";
+}
+
+<h1>GetListOrderBook</h1>
+<form asp-action="GetListOrderBook" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            Find by type: <input type="text" name="SearchType" value="@ViewData["CurrentType"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+@Html.ActionLink("Create New", "CreateOrderBook")
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="GetListOrderBook" asp-route-sortOrderBook="@ViewData["IdSortParmOrderBook"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrderBook" asp-route-sortOrderBook="@ViewData["IdBookSortParmOrderBook"]">@Html.DisplayNameFor(model => model.IdBook)</a>
+            </th>
+            <th>
+                <a asp-action="GetListOrderBook" asp-route-sortOrderBook="@ViewData["MarkSortParmOrderBook"]">@Html.DisplayNameFor(model => model.Mark)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdBook)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mark)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateOrderBook", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("View", "GetOrderBook", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "DeleteOrderBook", new { id = item.Id/* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Index</a>

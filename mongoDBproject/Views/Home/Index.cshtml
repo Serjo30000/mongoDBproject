@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Переходы между страницами</h1>
+    @Html.ActionLink("Книги", "GetListBook")
+    @Html.ActionLink("Жанры", "GetListGenre")
+    @Html.ActionLink("Пользователи", "GetListUser")
+    @Html.ActionLink("Заказы", "GetListOrder")
+    @Html.ActionLink("Заказанные книги", "GetListOrderBook")
+    @Html.ActionLink("Книги для редактирования", "GetListLibrarianBook")
+    @Html.ActionLink("Жанры для редактирования", "GetListLibrarianGenre")
+    @Html.ActionLink("Уведомления", "GetListLibrarianOrderBook")
+    @Html.ActionLink("Книги на покупку", "GetListClientBook")
+    @Html.ActionLink("Мои книги", "GetListClientOrder")
+    @Html.ActionLink("Отчёт по пользователям", "GetAggregateUsers")
+    @Html.ActionLink("Отчёт по заказам", "GetAggregateOrders")
+    @Html.ActionLink("Отчёт по книгам", "GetAggregateBooks")
+</div>

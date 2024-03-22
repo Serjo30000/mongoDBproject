@@ -1,0 +1,59 @@
+﻿@model IEnumerable<mongoDBproject.Models.User>
+
+@{
+    ViewData["Title"] = "GetListUser";
+}
+
+<h1>GetListUser</h1>
+<form asp-action="GetListUser" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            Find by type: <input type="text" name="SearchType" value="@ViewData["CurrentType"]" />
+            <input type="submit" value="Search" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="GetListUser" asp-route-sortUser="@ViewData["IdSortParmUser"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th>
+            <th>
+                <a asp-action="GetListUser" asp-route-sortUser="@ViewData["LoginSortParmUser"]">@Html.DisplayNameFor(model => model.Login)</a>
+            </th>
+            <th>
+                <a asp-action="GetListUser" asp-route-sortUser="@ViewData["NumberPhoneSortParmUser"]">@Html.DisplayNameFor(model => model.NumberPhone)</a>
+            </th>
+            <th>
+                <a asp-action="GetListUser" asp-route-sortUser="@ViewData["EmailSortParmUser"]">@Html.DisplayNameFor(model => model.Email)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("View", "GetUser", new { id = item.Id/* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.Id/* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index">Back to Index</a>
